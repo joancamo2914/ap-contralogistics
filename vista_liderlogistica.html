@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <h1> inserta los datos de la factura</h1>
+    <h1> <?= tittle ?> </h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Codigo de factura" id="id-factura" type="text" class="validate">
+                <label for="id-factura">Codigo de factura</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="fecha" type="date" class="validate">
+                <label for="fecha">Fecha</label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label>Cliente</label>
+        <input type="text" name="cliente" id="id-cliente">
+    </div>
+    <div>
+        <label>Vendedor</label>
+        <input type="text" name="vendedor" id="id-vendedor">
+        <button id="btn-enviar">Enviar</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <?!= include ("serv_liderlogistica"); ?>
+</body>
+
+</html>

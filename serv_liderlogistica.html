@@ -1,0 +1,13 @@
+    <script>
+        document.getElementById('btn-enviar').addEventListener('click', enviarFactura);
+
+        function enviarFactura() {
+        var facturaInfo = {}
+        facturaInfo.codigo = document.getElementById('id-factura').value;
+        facturaInfo.fecha = document.getElementById('fecha').value;
+        facturaInfo.cliente = document.getElementById('id-cliente').value;
+        facturaInfo.vendedor = document.getElementById('id-vendedor').value;
+    
+        google.script.run.dtoFactura(facturaInfo);
+        }
+    </script>
