@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articulos</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <h1> inserta los usuarios de la Ruta</h1>
+    <h2> <?= tittle ?> </h2>
+
+      <div class="input-field col s12">
+    <select id= "roqui">
+      <option value="" disabled selected>Choose your option</option>
+      <?!= list ?>
+    </select>
+    <label>Materialize Select</label>
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <?!= include("crearRutas_js"); ?>
+</body>
+
+</html>
