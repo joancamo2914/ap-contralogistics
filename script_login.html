@@ -1,0 +1,12 @@
+<script>
+    function enviarCredenciales() {
+        var usuario = document.getElementById('usuario').value;
+        var password = document.getElementById('password').value;
+        google.script.run.withSuccessHandler(redirigir).
+        comprobarCredenciales(usuario, password);
+    }
+
+    function redirigir(rol) {
+        return window.location.href = ScriptApp.getService().getUrl() + '?v=' + rol;
+    }
+</script>

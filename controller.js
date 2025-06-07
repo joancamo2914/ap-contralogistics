@@ -5,12 +5,6 @@ Route.path = function (route, callback){
   Route[route] = callback;
 }
 
-function myFunction(u) {
-  var ws = ss.getSheetByName('usuarios');
-  Logger.log('esto ' + u);
-  ws.appendRow([u, new Date()]);
-}
-
 function doGet(e) {
 
   Route.path('form', loadForm);
@@ -49,8 +43,6 @@ function loadForm() {
 }
 
 function loadLogin(){
-  var ws = ss.getSheetByName('usuarios');
-  var usersList = ss.getRange("A2:A" + ws.getLastRow()).getValues().flat();
   return render('vista_login', {tittle: "Login"});
 }
 
@@ -67,4 +59,10 @@ function laodBodega(){
 function loadConductor(){
   var ws = ss.getSheetByName('usuarios');
   return render ('vista_conductor', { tittle: "Conductor"});
+}
+
+function myFunction(u) {
+  var ws = ss.getSheetByName('usuarios');
+  Logger.log('esto ' + u);
+  ws.appendRow([u, new Date()]);
 }
