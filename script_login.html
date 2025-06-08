@@ -1,12 +1,27 @@
 <script>
     function enviarCredenciales() {
+        console.log('Enviando credenciales...');
         var usuario = document.getElementById('usuario').value;
+        console.log(usuario);
         var password = document.getElementById('password').value;
-        google.script.run.withSuccessHandler(redirigir).
+        console.log(password);
+        google.script.run.withSuccessHandler(redireccionarPorRol).
         comprobarCredenciales(usuario, password);
     }
 
-    function redirigir(rol) {
-        return window.location.href = ScriptApp.getService().getUrl() + '?v=' + rol;
+    function redireccionarPorRol (rol) {
+        console.log('activando funcion Redireccionando por rol...');
+        if (rol) {
+            console.log('Rol obtenido: ' + rol);
+            google.script.run.withSuccessHandler(function (urlBase){
+            (window.top.location.href = urlBase + '?v=' + rol);
+            console.log('Redireccionando a: ' + urlBase + '?v=' + rol);
+        })
+        .getScriptUrl();
+        } else {
+            console.log('No se obtuvo un rol válido.');
+            alert('Credenciales incorrectas o usuario no encontrado.');
+            return;
+        }
     }
 </script>
