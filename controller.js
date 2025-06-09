@@ -47,8 +47,8 @@ function loadLogin(){
 }
 
 function laodLogistica(){
-  var ws = ss.getSheetByName('usuarios');
-  return render ('vista_liderlogistica', { tittle: "Logistica"});
+  let datosUsuarios = cargarDatosUsuarios();
+  return render ('vista_liderlogistica', { tittle: "Logistica", listUsers: datosUsuarios.list});
 }
 
 function laodBodega(){

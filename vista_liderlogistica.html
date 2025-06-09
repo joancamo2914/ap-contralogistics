@@ -11,32 +11,104 @@
 </head>
 
 <body>
-    <h1> inserta los datos de la factura</h1>
-    <h1> <?= tittle ?> </h1>
-
-    <div class="container">
-        <div class="row">
-            <div class="input-field col s6">
-                <input placeholder="Codigo de factura" id="id-factura" type="text" class="validate">
-                <label for="id-factura">Codigo de factura</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="fecha" type="date" class="validate">
-                <label for="fecha">Fecha</label>
-            </div>
+    <!--Tabs-->
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#FacturasTab">Facturas</a></li>
+                <li class="tab col s3"><a href="#RutasTab">Rutas</a></li>
+            </ul>
         </div>
-    </div>
-    <div>
-        <label>Cliente</label>
-        <input type="text" name="cliente" id="id-cliente">
-    </div>
-    <div>
-        <label>Vendedor</label>
-        <input type="text" name="vendedor" id="id-vendedor">
-        <button id="btn-enviar">Enviar</button>
-    </div>
+
+        <div id="FacturasTab" class="col s12"> <!-- Facturas Tab-->
+
+            <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn modal-trigger" href="#agregarFactura">Agregar Factura</a>
+
+            <!-- Modal Structure -->
+            <div id="agregarFactura" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Agregar factura</h4>
+
+                    <!-- agregar factura panel-->
+                    <h3> Detalle de la factura</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="Codigo de factura" id="idFactura" type="text" class="validate"
+                                    required>
+                                <label for="id-factura">Codigo de factura</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="fecha" type="date" class="validate" required>
+                                <label for="fecha">Fecha</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label>Cliente</label>
+                            <input type="text" name="id-cliente" id="idCliente" required>
+                        </div>
+                        <div class="row">
+                            <label>Vendedor</label>
+                            <input type="text" name="id-vendedor" id="idVendedor" required>
+                            <button id="btn-enviar">Enviar</button>
+                        </div>
+                    </div> <!-- close facturas container-->
+
+                    <div class="divider"></div>
+
+                    <h3>Detalle de los artículos</h3>
+                    <div class="container">
+                        <div class="row">
+                            <input type="text" id="codigoArt" name="codigoArt">
+                            <label for="codigoArt">Código</label>
+                        </div>
+                        <div class="row">
+                            <input type="text" id="nombreArt" name="nombreArt">
+                            <label for="nombreArt">Nombre</label>
+                        </div>
+                        <div class="row">
+                            <input type="number" id="cantidadArt" name="cantidadArt">
+                            <label for="cantidadArt">Cantidad</label>
+                            <input type="text" name="unidad" id="unidad">
+                            <label for="unidad"></label>
+                            <input type="text" name="bodega" id="bodega">
+                            <label for="bodega"></label>
+                        </div>
+                    </div> <!-- close detalle facturas container-->
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Guardar</a>
+                    </div>
+                </div> <!-- Close Modal agregar factura-->
+
+                <div class="divider"></div>
+                <div class="container">
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>Código de Factura</th>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Vendedor</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="facturas-list">
+                            <?!= listUsers ?>
+                        </tbody>
+                    </table>
+                </div> <!-- Close tabla de facturas-->
+
+            </div> <!-- close Facturas Tab-->
+        </div> <!-- close Facturas Tab-->
+
+        <div id="RutasTab" class="col s12"> <!-- Rutas Tab-->
+            Rutas
+        </div> <!-- Close Rutas Tab-->
+    </div> <!-- close tab row-->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <?!= include ("serv_liderlogistica"); ?>
+    <?!= include ("dto_factura"); ?>
 </body>
 
 </html>

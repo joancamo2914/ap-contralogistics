@@ -1,0 +1,50 @@
+<script>
+    var instance = M.Tabs.init(el);
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+    
+    document.getElementById('btn-enviar').addEventListener('click', clicBtnEnviarFactura);
+
+    function clicBtnEnviarFactura() {
+
+        var aValidar = {
+            idFactura: 'Número de factura no válido',
+            fecha: 'Fecha no válida',
+            idCliente: 'Cliente no válido',
+            idVendedor: 'Vendedor no válido'
+        };
+
+        var allValid = true;
+        var idKeys = Object.keys(aValidar);
+        idKeys.forEach(function (id) {
+            var isValid = checkIfValid(id, aValidar[id]);
+            if (!isValid) {
+                allValid = false;
+            }
+        });
+        if (allValid) {
+            enviarFactura();
+        }
+    }
+
+    function checkIfValid(id, mensaje) {
+        var isValid = document.getElementById(id).checkValidity();
+        if (!isValid) {
+            M.toast({ html: mensaje })
+            return false;
+        }
+        return true;
+    }
+
+    function enviarFactura() {
+        var facturaInfo = {}
+        facturaInfo.codigo = document.getElementById('idFactura').value;
+        facturaInfo.fecha = document.getElementById('fecha').value;
+        facturaInfo.cliente = document.getElementById('idCliente').value;
+        facturaInfo.vendedor = document.getElementById('idVendedor').value;
+
+        google.script.run.agregarFactura(facturaInfo);
+    }
+</script>

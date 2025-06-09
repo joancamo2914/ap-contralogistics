@@ -20,15 +20,18 @@
         <form>
             <div class="col s12">
                 <div class="input-field col s12">
-                    <input id="usuario" type="text" class="validate">
+                    <input id="usuario" type="text" class="validate" required>
                     <label for="usuario">Usuario</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
+                    <input id="password" type="password" class="validate" required>
                     <label for="password">Contraseña</label>
                 </div>
                 <div class="input-field col s12">
-                    <button class="waves-effect waves-light btn" onclick="enviarCredenciales()">Iniciar sesions</button>
+                    <button class="btn waves-effect waves-light" type="button" name="action" 
+                    onclick="enviarCredenciales()">Iniciar sesion
+                        <i class="material-icons right">send</i>
+                    </button>
                 </div>
             </div>
         </form>

@@ -1,4 +1,5 @@
 <script>
+
     function enviarCredenciales() {
         console.log('Enviando credenciales...');
         var usuario = document.getElementById('usuario').value;
@@ -6,22 +7,31 @@
         var password = document.getElementById('password').value;
         console.log(password);
         google.script.run.withSuccessHandler(redireccionarPorRol).
-        comprobarCredenciales(usuario, password);
+            withFailureHandler(onLoginFailure).
+            comprobarCredenciales(usuario, password);
     }
 
-    function redireccionarPorRol (rol) {
-        console.log('activando funcion Redireccionando por rol...');
+    function redireccionarPorRol(rol) {
+        console.log('activando funcion Redireccionando por rol...' + rol);
         if (rol) {
             console.log('Rol obtenido: ' + rol);
-            google.script.run.withSuccessHandler(function (urlBase){
-            (window.top.location.href = urlBase + '?v=' + rol);
-            console.log('Redireccionando a: ' + urlBase + '?v=' + rol);
-        })
-        .getScriptUrl();
+            google.script.run
+                .withSuccessHandler(function (urlBase) {
+                    (window.top.location.href = urlBase + '?v=' + rol
+                        
+                    );
+                })
+                .withFailureHandler(onLoginFailure)
+                .getScriptUrl();
         } else {
             console.log('No se obtuvo un rol válido.');
             alert('Credenciales incorrectas o usuario no encontrado.');
             return;
         }
+    }
+
+    function onLoginFailure(error) {
+        console.error('Error al llamar al servidor: ' + error.message);
+        alert('Ocurrió un error inesperado. Por favor, revisa la consola para más detalles. Error: ' + error.message);
     }
 </script>
